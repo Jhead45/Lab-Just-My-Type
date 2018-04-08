@@ -44,9 +44,8 @@ $(document).keypress(function(e) {
   });
 });
 
-//current sentence
+//current sentence and current letter
 $("#sentence").text(writing);
-//target letter
 $("#target-letter").text(letter);
 
 
@@ -59,8 +58,7 @@ $("#target-letter").text(letter);
     }
     //if typing the correct key
     if (e.which == sentences[array].charCodeAt(letterPlace)) {
-      //makes a green check mark in feedback
-      let correct = $('<span class="glyphicon-ok">✓</span>');
+      let correct = $('<span class="green">✓</span>');
       $(correct).appendTo("#feedback");
       //create highlight in sentence
       $("#yellow-block").css("left", "+=17.3px");
@@ -70,15 +68,12 @@ $("#target-letter").text(letter);
       $("#target-letter").text(letter);
       //if sentence is complete
       if (letterPlace === writing.length) {
-        //next sentence
-        array++;
+        array++; 
         //if all sentences are complete
         if (array === sentences.length) {
-          //time
           let endDate = new Date();
           let endTime = endDate.getTime();
           let minutes = (endTime - startTime) / 60000;
-          // finds wpm
           wpm = Math.round(54 / minutes - 2 * errors);
           var confirmBox = confirm(
             `You typed ${wpm} words per minute! Would you like to try again?`
@@ -93,15 +88,13 @@ $("#target-letter").text(letter);
           letterPlace = 0;
           letter = writing.substring(letterPlace, letterPlace + 1);
           $("#target-letter").text(letter);
-          $("#yellow-block").css("left", "+=0px");
+          $("#yellow-block").css("left", "15px");
           $("#feedback").text("");
         }
       }
     } else {
-      //wrong on feedback
-      let wrong = $('<span class="glyphicon-remove">𝘹</span>');
+      let wrong = $('<span class="red">x</span>');
       $(wrong).appendTo("#feedback");
-      //mistake counter
       errors++;
     }
   });

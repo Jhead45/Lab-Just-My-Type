@@ -12,9 +12,11 @@
 #yellow-block {
   position: absolute;
   margin-top: 10px;
+  margin-left: 3px;
   width: 15px;
   height: 15px;
   background-color: yellow;
+  padding: 0;
 }
 
 .keyboard-container {
@@ -41,3 +43,10 @@
   color : #CD2626;
 }
 
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
