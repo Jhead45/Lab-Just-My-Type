@@ -50,3 +50,7 @@
 .red {
   color: red;
 }
+
+body {
+  background-color: rgb(159, 177, 165);
+}
